@@ -1,0 +1,54 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2017/8/2 22:02
+
+
+class Event(object):
+    def __init__(self):
+        self.name = "tom"
+
+    def setName(self, name):
+        self.name = name
+
+    def getName(self):
+        return self.name
+
+
+class ModifyListen(object):
+    def handleEvent(self, event):
+        print "i am modify name %s" %(event.getName())
+
+class NewNameListen(object):
+    def handleEvent(self, event):
+        print "this is my new name:%s" %(event.getName())
+
+
+class EventDispatcher(object):
+    def __init__(self):
+        self.__observers = list()
+
+    def registerEvent(self, eventlisten):
+        self.__observers.append(eventlisten)
+
+    def notifyAll(self, event):
+        for eventListen in self.__observers:
+            eventListen.handleEvent(event)
+
+# 事件分发器
+dispatch = EventDispatcher()
+
+# 事件监听器
+modifyListen = ModifyListen()
+newnameListen = NewNameListen()
+# 向事件分发器中注册事件监听器
+dispatch.registerEvent(modifyListen)
+dispatch.registerEvent(newnameListen)
+# 事件源
+event = Event()
+event.setName("jobs")
+# 分发事件
+dispatch.notifyAll(event)
+
+
+
+
+

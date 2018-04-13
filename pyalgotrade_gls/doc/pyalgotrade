@@ -1,0 +1,394 @@
+
+PyAlgoTrade 介绍
+PyAlgoTrade  可解释为python算法交易，简称PAT
+
+    随着这几年量化的兴起，出现了很多基于python的量化交易平台，但是大所述量化交易平台都是以线上为主，不能进行离线操作，比如国内的
+    聚宽、优矿、米筐、京东量化等，很少有线下的python量化平台供初学者学习和使用。
+    在这里对线上和线下的python量化平台进行一个简要的分析和对比
+    目前国内的量化平台诸如聚宽、优矿、米筐、京东量化等，各平台优缺点请自行百度。
+
+    进行量化分析最主要的是需要数据的支持，没有数据的支持和验证，再好的想法也很能实现为策略，然而线上量化平台为我们提供的丰富的数据支持，
+    以及API。带来便利性的同时让量化成了黑箱，不知其内部原理和机制，扩展性差，不能自定义一些技术指标和统计指标。
+
+    本站点选择以PAT为学习和研究的平台，主要基于以下几点：
+        1、PAT是一套相对完整、成熟的python量化系统，其中集成了大多数的技术指标和统计指标
+        2、完整的文档，丰富的实例
+        3、基于事件驱动的回测平台
+        4、可离线使用，扩展性强，可自行定制技术指标和统计指标
+PyAlgoTrade 基于事件驱动的回测框架，在这里对事件驱动进行简要的说明
+事件驱动机制，和普通函数调用的不同之处在于：应用程序不是主动的调用某个API完成处理，而是由事件监听器监听事件并进行相应的处理。
+事件驱动程序的基本结构是由一个事件源、事件以及监听器构成，事件源产生事件、监听器监听事件并进行相应的处理和计算。
+当一个对象的状态发生变化时，所有依赖它的对象都得到通知并自动更新。当事件源的属性发生变化时，所有监听该事件的事件监听器都会接收到消息并作出响应。
+在PyAlgoTrade中事件驱动贯穿整个框架之中，在后续技术指标时更加详细的说明。
+
+PyAlgoTrade 安装
+    PyAlgoTrade的安装时比较简单的，可直接通过pip进行安装
+    pip install  pyalgotrade
+
+PyAlgoTrade 包含以下基本模块
+    Strategies： 策略，交易的逻辑以及交易的时机等。
+    DataSeries:  数据序列，管理时间序列数据的抽象类
+    Feeds：      数据源， CSV文件为主，可通过自己的数据类型进行扩展
+    Brokers：    交易模块，负责执行订单
+    Technical：  技术， 可根据数据集，进行技术指标的计算
+    StrategyAnalyzer:  分析，是对策略结果如收益率、夏普率等进行计算
+    Optimizer：  优化器，允许测试、使用不同的电脑以及集群，便于扩展
+
+
+Feeds
+
+    PyAlgoTrade中数据又是以bar的类型进行组装，没个数据集被称之为一个bar，在本案例中，正对自己的数据类型对bar类进行简单的扩展，
+    以适应自己的数据集，如果读者有自己特别的数据集可进行相应的调整。
+    在本项目中对原有的csvfeed进行更改和扩充，并添加的从dataFrame数据集添加bar的方法。
+
+class GenericBarFeed(BarFeed):
+
+    def __init__(self, frequency=bar.Frequency.DAY, timezone=None, maxLen=None):
+        super(GenericBarFeed, self).__init__(frequency, maxLen)
+
+        self.__timezone = timezone
+        # Assume bars don't have adjusted close. This will be set to True after
+        # loading the first file if the adj_close column is there.
+        self.__haveAdjClose = False
+
+        self.__barClass = bar.BasicBar
+
+        self.__dateTimeFormat = "%Y-%m-%d"
+
+        self.__columnNames = {
+            "datetime": "date",
+            "open": "open",
+            "high": "high",
+            "low": "low",
+            "close": "close",
+            "volume": "volume",
+            "adj_close": "adjust_price",
+        }
+
+        # self.__dateTimeFormat expects time to be set so there is no need to
+        # fix time.
+        self.setDailyBarTime(None)
+
+    在本例中只需要更改__columnNames中对应的字段名称和__dateTimeFormat时间的类型。
+
+    def addBarsFromDataFrame(self, instrument, dataframe, timezone=None):
+        if timezone is None:
+            timezone = self.__timezone
+
+        rowParser = GenericRowParser(
+            self.__columnNames, self.__dateTimeFormat, self.getDailyBarTime(), self.getFrequency(),
+            timezone, self.__barClass
+        )
+
+        super(GenericBarFeed, self).addBarsFromDataFrame(instrument, dataframe, rowParser)
+
+        if rowParser.barsHaveAdjClose():
+            self.__haveAdjClose = True
+        elif self.__haveAdjClose:
+            raise Exception("Previous bars had adjusted close and these ones don't have.")
+
+    然后定义自己加载的方法，在本方法中，需要一个解析类，以及具体的方法，本方法中，具体的方法是在父类中完成。
+
+    def addBarsFromDataFrame(self, instrument, dataframe, rowParser):
+        """从dataframe中加载bar信息
+        :param instrument: 合约代码
+        :param dataframe: bar数据集
+        :param rowParser: 解析类
+        :return:
+        """
+        loadedBars = []
+        for index in range(len(dataframe)):
+            row = dataframe.ix[index]
+            bar_ = rowParser.parseBar(row)
+            if bar_ is not None and (self.__barFilter is None or self.__barFilter.includeBar(bar_)):
+                loadedBars.append(bar_)
+        self.addBarsFromSequence(instrument, loadedBars)
+
+     至此我们可以通过addBarsFromDataFrame方法将dataframe数据集添加到bar中，进行回测。详细代码参加trade.feed.genericbarfeed
+
+Brokers： 交易模块，可以将brokers简单理解为经纪人
+
+    在对Brokers进行说明之前还有一个重要的类需要说明，这个类就是Order订单类
+    Order类是订单类，保存并记录订单的类型，订单的状态，以及订单的执行结果
+    MarketOrder  市价订单（按市场当时最优价或市价立即购买或出手一定数量的合约）
+    LinitOrder  限价单（给定最高阶或者最低价，当价格达到这个限价是触发交易）
+    StopOrder   止损单（停止损失的订单。预设一个固定的止损价格。一旦被触发的止损价，将会以市场单发送到市场上）
+    StopLimitOrder  限价止损单（当价格达到某一止损价格时﹐止损限价订单即转为限价订单）
+
+    在回测中Brokers可简单理解为经纪人，只对主要的几个方法进行简要说明
+    setCommission  设置手续费
+    getCash   账户余额
+    getShares 股票的数量
+    sybmitOrder   提交订单
+
+
+Backtesting 回测模块，在回测框架中回测模块承担着重要的交易所的任务，
+    对提交的订单进行处理并对佣金、收益等计算，
+
+
+认识了PyAlgoTrade几个重要的模块后，来了解一下PyAlgoTrade的执行流程，对PyAlgoTrade技术指标以及统计指标在后续的更加详细的介绍。
+PyAlgoTrade 开大策略的步骤如下：
+
+    定义策略并实现onBars方法
+    class MyStrategy(strategy.BacktestingStrategy):
+        def __init__(self, feed, instrument, smaPeriod):
+            super(MyStrategy, self).__init__(feed, 100000)
+            self.__position = None
+            self.__instrument = instrument
+            self.getBroker().setCommission(backtesting.FixedPerTrade(5))
+            # 指数数据
+            # self.setUseAdjustedValues(False)
+            self.__shortsma = ma.SMA(feed[instrument].getPriceDataSeries(), 4)
+            self.__longsma = ma.SMA(feed[instrument].getPriceDataSeries(), 40)
+
+        def onBars(self, bars):
+        if len(self.__longsma) < 2:
+            return
+        bar = bars[self.__instrument]
+        shares = self.getBroker().getShares(self.__instrument)
+
+        if self.__shortsma[-1] > self.__shortsma[-2] and self.__shortsma[-1] > self.__longsma[-1] and self.__shortsma[-2] < self.__longsma[-2]:
+            self.marketOrder(self.__instrument, 100, True)
+
+        if self.__longsma[-1] < self.__longsma[-2] and self.__shortsma[-1] < self.__longsma[-1] and self.__shortsma[-2] > self.__longsma[-2]:
+            self.marketOrder(self.__instrument, -1*shares, True)
+
+    实例化策略并运行策略
+    feed = GenericBarFeed()
+    trade_data = pd.read_csv('D:\sh000001.csv')
+    feed.addBarsFromDataFrame("sh000001", trade_data)
+    myStrategy = MyStrategy(feed, "sh000001", smaPeriod)
+
+    运行策略
+    myStrategy.run()
+
+
+下面对PyAlgoTrade运行过程进行简单的分析
+
+dispatcher  事件分发器，负责事件的注册和分发
+
+PyAlgoTrade 是事件驱动回测框架，事件驱动在前面提到过，个人觉得应该由事件源、监听器以及事件分发器构成。
+
+由event文件夹中有event案例
+
+有本例可以看出，我们需要一个事件分发器，然后将监听器注册到事件分发器中，当事件源触发事件时，由事件分发器负责向各个监听器分发，
+其实质是执行监听器中定义的事件处理程序，在PyAlgoTrade需要注意的是在向分发器中注册监听器时并没有注册监听器，而是直接注册监听器方法，
+当需要分发时直接执行注册的方法。
+在PyAlgoTrade回测框架中，事件驱动无处不在，再计算技术指标时，并不是刚开始就直接计算，而是在程序运行的工程中，当getValue时触发事件，
+随后通知所有的进行技术指标计算的监听器，计算指标并返回
+
+
+在技术指标计算的过程大致如下：
+
+当__init__ 初始化时
+    def __init__(self, dataSeries, eventWindow, maxLen=None):
+        super(EventBasedFilter, self).__init__(maxLen)
+        self.__dataSeries = dataSeries
+        self.__dataSeries.getNewValueEvent().subscribe(self.__onNewValue)
+        self.__eventWindow = eventWindow
+
+    在这里getNewValueEvent()为事件分发器
+    subscribe()将监听器注册到事件分发器中
+    self.__onNewValue 承担监听器的角色，只不过在这里直接注册了具体的方法，没有注册监听器
+    当事件分发器分发事件时，直接执行该方法。
+
+
+    通过上述代码以及事件驱动模型的理解，我们可以自行定义新的指标，只需要定义__onNewValue方法，并将该方法注册到事件分发器中，就可以完成新指标的计算。
+    在本项目中technical文件均基于该中模型进行开发，在后续过程中，个人可以根据自己的具体需求进行相应的技术指标开发。
+
+在PyAlgoTrade回测框架的回测流程：
+
+当初始化交易类时，这里只拿重点的对象来说明一下
+
+    def __init__(self, barFeed, broker):
+        self.__dispatcher = dispatcher.Dispatcher()
+        self.__broker.getOrderUpdatedEvent().subscribe(self.__onOrderEvent)
+        self.__barFeed.getNewValuesEvent().subscribe(self.__onBars)
+        self.__dispatcher.getStartEvent().subscribe(self.onStart)
+        self.__dispatcher.getIdleEvent().subscribe(self.__onIdle)
+        # It is important to dispatch broker events before feed events, specially if we're backtesting.
+        self.__dispatcher.addSubject(self.__broker)
+        self.__dispatcher.addSubject(self.__barFeed)
+
+    看这段代码我们可以看到在初始化的时候向分发器dispatcher中注册了broker 和barFeed,在这里broker和barFeed担任监听器角色，
+    于此同时向broker中注册了self.__onOrderEvent方法，想 barFeed中注册了self.__onBars方法，这2个方法在后面会详细介绍。
+
+
+    当运行交易策略时，myStrategy.run() =====》 self.__dispatcher.run()
+
+    dispatcher的run()方法如下：
+
+        def run(self):
+        try:
+            for subject in self.__subjects:
+                subject.start()
+
+            self.__startEvent.emit()
+
+            while not self.__stop:
+                eof, eventsDispatched = self.__dispatch()
+                if eof:
+                    self.__stop = True
+                elif not eventsDispatched:
+                    self.__idleEvent.emit()
+        finally:
+            for subject in self.__subjects:
+                subject.stop()
+            for subject in self.__subjects:
+                subject.join()
+
+    在此方法中首先遍历运行subject.start()方法，这里的subject就是前面提到的再初始化的时候注册的broker 和barFeed，
+    broker的start()方法中什么事偶没有做，而在barFeed中只上将起运行状态该为了true，
+    然后运行startEvent.emit()，这里的emit方法就是事件分发器分发的过程，在此过程中执行策略onStart方法，我们可以在
+    定义交易类的时候实现侧方法，在回测开始的时候做一些事，
+
+    随后运行self.__dispatch()此方法时dispatcher的方法，在这里可以看到只要策略不停值，将反复执行这一过程。在此方法中主要的步骤如下：
+        if not eof:
+            self.__currDateTime = smallestDateTime
+
+            for subject in self.__subjects:
+                if self.__dispatchSubject(subject, smallestDateTime):
+                    eventsDispatched = True
+        return eof, eventsDispatched
+
+    在这里的subject就是前面提到过的broker 和barFeed。
+        def __dispatchSubject(self, subject, currEventDateTime):
+        ret = False
+        # Dispatch if the datetime is currEventDateTime of if its a realtime subject.
+        if not subject.eof() and subject.peekDateTime() in (None, currEventDateTime):
+            ret = subject.dispatch() is True
+        return ret
+     然后运行subject.dispatch()
+     在broker中pass了，
+     下面请看barFeed的dispatch()方法
+    def dispatch(self):
+        dateTime, values = self.getNextValuesAndUpdateDS()
+        if dateTime is not None:
+            self.__event.emit(dateTime, values)
+        return dateTime is not None
+    请看self.getNextValuesAndUpdateDS()方法，还记得前面提到过的技术指标的计算吗？，当getNextValues时触发事件，调用__onNewValue进行技术指标的计算
+
+    随后执行self.__event.emit(dateTime, values)方法，回过头看看在初始化策略类是
+    self.__barFeed.getNewValuesEvent().subscribe(self.__onBars)
+    在此之前初始化broker是
+    barFeed.getNewValuesEvent().subscribe(self.onBars)
+
+    这里getNewValuesEvent()返回的正是此event，在这行的emit方法时，
+    先执行broker中的onBars()方法，再策略类的__onBars方法，
+
+    在broker的onBars()代码如下：
+    def onBars(self, dateTime, bars):
+        # 计算账户总资产
+        self.__fillStrategy.onBars(self, bars)
+
+        # 获取有效订单
+        ordersToProcess = self.__activeOrders.values()
+
+        # 执行订单
+        for order in ordersToProcess:
+            self.__onBarsImpl(order, bars)
+
+
+    barfeed中__onBars()方法：
+    def __onBars(self, dateTime, bars):
+
+        # 计算统计指标
+        self.__notifyAnalyzers(lambda s: s.beforeOnBars(self, bars))
+
+        # 运行策略onBars方法，onBars方法正是我们买卖的核心，
+        self.onBars(bars)
+
+        # 3: Notify that the bars were processed.
+        self.__barsProcessedEvent.emit(self, bars)
+
+    然后回到dispatcher继续执行dispatch()方法，至此在PyAlgoTrade回测框架的回测流程到此结束。
+
+    在这里我们可以看到，当新的bar的时候，先执行订单，然后计算统计指标，最后执行策略中定义的onBars()方法，由此也可以看出PyAlgoTrade在回
+    t日产生信号，t+1日执行订单，也就是说更具昨天的数据和onBars()方法产生订单，在今天获取到新数据时以今日的收盘价执行订单进行买卖操作。
+    部分线上量化平台可选择t日的收盘价进行交易还是t+1日的开盘价进行交易。
+
+    统计指标的计算
+
+
+    self.__notifyAnalyzers(lambda s: s.beforeOnBars(self, bars))
+
+    这里的s代表的就是统计指标，在运行统计计算的时候先执行beforeOnBars操作，
+
+    在说明统计指标具体实现方法之前我们先来看一看统计指标时怎么使用的
+    from pyalgotrade.stratanalyzer import returns,
+    myreturn = returns.Returns()
+    myStrategy.attachAnalyzer(myreturn)
+
+    是在策略中注册统计指标
+    def attachAnalyzerEx(self, strategyAnalyzer, name=None):
+        if strategyAnalyzer not in self.__analyzers:
+            if name is not None:
+                if name in self.__namedAnalyzers:
+                    raise Exception("A different analyzer named '%s' was already attached" % name)
+                self.__namedAnalyzers[name] = strategyAnalyzer
+
+            strategyAnalyzer.beforeAttach(self)
+            self.__analyzers.append(strategyAnalyzer)
+            strategyAnalyzer.attached(self)
+    在此可以看到
+    先执行beforeAttach方法
+    然后在策略__analyzers中注册统计指标，
+    最后再执行attached方法
+
+    比如在计算收益率Return中
+
+    def beforeAttach(self, strat):
+        # Get or create a shared ReturnsAnalyzerBase
+        analyzer = ReturnsAnalyzerBase.getOrCreateShared(strat)
+        analyzer.getEvent().subscribe(self.__onReturns)
+
+    在此方法中向event中注册__onReturns方法，__onReturns是计算统计指标的核心方法。
+
+    然后再看一下beforeOnBars方法
+    def beforeOnBars(self, strat, bars):
+        self.__portfolioReturns.update(strat.getBroker().getEquity())
+
+        # Notify that new returns are available.
+        self.__event.emit(bars.getDateTime(), self)
+
+    通过__event.emit()方法执行监听器中方法，运行在此之前注册的__onReturns方法，完成统计指标的计算。
+    在计算统计指标的时候并不是所有的统计方法都是通过这样的流程计算的，
+    比如说在计算最大回撤中，在beforeOnBars中直接进行计算，
+    def beforeOnBars(self, strat, bars):
+        equity = self.calculateEquity(strat)
+        self.__currDrawDown.update(bars.getDateTime(), equity, equity)
+        self.__longestDDDuration = max(self.__longestDDDuration, self.__currDrawDown.getDuration())
+        self.__maxDD = min(self.__maxDD, self.__currDrawDown.getMaxDrawDown())
+    后续如果有需要在通过此类方法进行的计算的时候，按照具体需求可以按照不同的流程进行开发。
+
+    至此关于PyAlgoTrade的基本流程到此结束，关于回测模块以及其他的模块将在后续进行分析。
+    在本项目中，对统计分析进行了统一整理并返回dataFrame类型，并根据其流程扩展了tradeposition（每日持仓）
+    transaction（交易详情模块）以及Alpha、Beta的计算模块。
+    在分析的过程中肯定有所疏忽和侧重点，希望对大家有所帮助，同时也希望大家提出不足或者是错误的地方，提出宝贵的意见和建议，
+    本人将不惜余力对其进行改正，谢谢。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
