@@ -6,20 +6,17 @@ class Event(object):
     def __init__(self):
         self.name = "tom"
 
-    def setName(self, name):
-        self.name = name
-
     def getName(self):
         return self.name
 
 
-class ModifyListen(object):
+class JavaListen(object):
     def handleEvent(self, event):
-        print "i am modify name %s" %(event.getName())
+        print "%s is learning java " %(event.getName())
 
-class NewNameListen(object):
+class PythonListen(object):
     def handleEvent(self, event):
-        print "this is my new name:%s" %(event.getName())
+        print "%s is learning python " % (event.getName())
 
 
 class EventDispatcher(object):
@@ -37,14 +34,13 @@ class EventDispatcher(object):
 dispatch = EventDispatcher()
 
 # 事件监听器
-modifyListen = ModifyListen()
-newnameListen = NewNameListen()
+javaListen = JavaListen()
+pythonListen = PythonListen()
 # 向事件分发器中注册事件监听器
-dispatch.registerEvent(modifyListen)
-dispatch.registerEvent(newnameListen)
+dispatch.registerEvent(javaListen)
+dispatch.registerEvent(pythonListen)
 # 事件源
 event = Event()
-event.setName("jobs")
 # 分发事件
 dispatch.notifyAll(event)
 

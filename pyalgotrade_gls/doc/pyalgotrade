@@ -35,7 +35,7 @@ PyAlgoTrade 包含以下基本模块
     Optimizer：  优化器，允许测试、使用不同的电脑以及集群，便于扩展
 
 
-Feeds
+Feeds 数据源
 
     PyAlgoTrade中数据又是以bar的类型进行组装，没个数据集被称之为一个bar，在本案例中，正对自己的数据类型对bar类进行简单的扩展，
     以适应自己的数据集，如果读者有自己特别的数据集可进行相应的调整。
@@ -65,9 +65,6 @@ class GenericBarFeed(BarFeed):
             "adj_close": "adjust_price",
         }
 
-        # self.__dateTimeFormat expects time to be set so there is no need to
-        # fix time.
-        self.setDailyBarTime(None)
 
     在本例中只需要更改__columnNames中对应的字段名称和__dateTimeFormat时间的类型。
 
@@ -169,6 +166,8 @@ dispatcher  事件分发器，负责事件的注册和分发
 
 PyAlgoTrade 是事件驱动回测框架，事件驱动在前面提到过，个人觉得应该由事件源、监听器以及事件分发器构成。
 
+
+
 由event文件夹中有event案例
 
 有本例可以看出，我们需要一个事件分发器，然后将监听器注册到事件分发器中，当事件源触发事件时，由事件分发器负责向各个监听器分发，
@@ -210,7 +209,7 @@ PyAlgoTrade 是事件驱动回测框架，事件驱动在前面提到过，个�
         self.__dispatcher.addSubject(self.__broker)
         self.__dispatcher.addSubject(self.__barFeed)
 
-    看这段代码我们可以看到在初始化的时候向分发器dispatcher中注册了broker 和barFeed,在这里broker和barFeed担任监听器角色，
+    在初始化的时候向分发器dispatcher中注册了broker 和barFeed,在这里broker和barFeed担任监听器角色，
     于此同时向broker中注册了self.__onOrderEvent方法，想 barFeed中注册了self.__onBars方法，这2个方法在后面会详细介绍。
 
 
@@ -258,6 +257,7 @@ PyAlgoTrade 是事件驱动回测框架，事件驱动在前面提到过，个�
         if not subject.eof() and subject.peekDateTime() in (None, currEventDateTime):
             ret = subject.dispatch() is True
         return ret
+
      然后运行subject.dispatch()
      在broker中pass了，
      下面请看barFeed的dispatch()方法

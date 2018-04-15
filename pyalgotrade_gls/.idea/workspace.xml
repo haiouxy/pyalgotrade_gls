@@ -11,44 +11,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="beta.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trade/analyzer/beta.py">
+      <file leaf-file-name="pyalgotrade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/doc/pyalgotrade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-              <folding>
-                <element signature="e#158#176#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dma.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trade/technical/dma.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BBCurve.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trade/technical/BBCurve.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="svm.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/trade/strategy/svm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="215" column="14" lean-forward="true" selection-start-line="215" selection-start-column="14" selection-end-line="215" selection-end-column="14" />
-              <folding>
-                <element signature="e#70#102#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="267">
+              <caret line="369" lean-forward="true" selection-start-line="369" selection-end-line="369" />
             </state>
           </provider>
         </entry>
@@ -56,20 +23,8 @@
       <file leaf-file-name="event" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/event">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="analyzer_db.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer_db.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-464">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#71#108#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="544">
+              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -77,19 +32,10 @@
       <file leaf-file-name="sma.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trade/strategy/sma.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BBcurve.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trade/strategy/BBcurve.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="17">
+              <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
               <folding>
-                <element signature="e#70#89#0" expanded="true" />
+                <element signature="e#70#102#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,8 +44,32 @@
       <file leaf-file-name="macd.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trade/strategy/macd.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="57" column="20" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="57" selection-end-column="20" />
+            <state relative-caret-position="238">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="e#26#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BBcurve.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trade/strategy/BBcurve.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+              <folding>
+                <element signature="e#70#89#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dma.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/trade/strategy/dma.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
               <folding>
                 <element signature="e#70#102#0" expanded="true" />
               </folding>
@@ -107,14 +77,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="analyzer_tushare.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer_tushare.py">
+      <file leaf-file-name="svm.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/trade/strategy/svm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="16" />
               <folding>
-                <element signature="e#69#84#0" expanded="true" />
+                <element signature="e#70#102#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ma.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/technical/ma.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1088">
+              <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/technical/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1207">
+              <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -145,21 +133,24 @@
         <option value="$PROJECT_DIR$/trade/feed/genericbarfeed.py" />
         <option value="$PROJECT_DIR$/doc" />
         <option value="$PROJECT_DIR$/event/event" />
-        <option value="$PROJECT_DIR$/doc/pyalgotrade" />
         <option value="$PROJECT_DIR$/trade/analyzer/analyzer.py" />
         <option value="$PROJECT_DIR$/trade/analyzer/analyzer_db.py" />
         <option value="$PROJECT_DIR$/trade/analyzer/analyzer_tushare.py" />
         <option value="$PROJECT_DIR$/trade/analyzer/beta.py" />
+        <option value="$PROJECT_DIR$/test/event" />
+        <option value="$PROJECT_DIR$/doc/pyalgotrade" />
+        <option value="$PROJECT_DIR$/doc/teat.py" />
+        <option value="$PROJECT_DIR$/trade/strategy/BBcurve.py" />
+        <option value="$PROJECT_DIR$/trade/strategy/dma.py" />
         <option value="$PROJECT_DIR$/trade/strategy/macd.py" />
         <option value="$PROJECT_DIR$/trade/strategy/sma.py" />
-        <option value="$PROJECT_DIR$/trade/strategy/BBcurve.py" />
         <option value="$PROJECT_DIR$/trade/strategy/svm.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-106" />
-    <option name="y" value="20" />
+    <option name="x" value="-236" />
+    <option name="y" value="239" />
     <option name="width" value="1379" />
     <option name="height" value="744" />
   </component>
@@ -173,60 +164,35 @@
         <subPane>
           <expand>
             <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
+              <item name="pyalgotrade_gls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyalgotrade_gls" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
+              <item name="pyalgotrade_gls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyalgotrade_gls" type="462c0819:PsiDirectoryNode" />
+              <item name="doc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pyalgotrade_gls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyalgotrade_gls" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
+              <item name="pyalgotrade_gls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyalgotrade_gls" type="462c0819:PsiDirectoryNode" />
               <item name="trade" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
+              <item name="pyalgotrade_gls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyalgotrade_gls" type="462c0819:PsiDirectoryNode" />
               <item name="trade" type="462c0819:PsiDirectoryNode" />
               <item name="analyzer" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="feed" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="fund" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
+              <item name="pyalgotrade_gls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pyalgotrade_gls" type="462c0819:PsiDirectoryNode" />
               <item name="trade" type="462c0819:PsiDirectoryNode" />
               <item name="strategy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="technical" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ganlanshu_open" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ganlanshu_open" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="tushare" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -259,7 +225,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.svm">
+  <component name="RunManager" selected="Python.dma">
     <configuration name="BBcurve" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ganlanshu_open" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -278,25 +244,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="event" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ganlanshu_open" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/event" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/event/event" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="macd" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="dma" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ganlanshu_open" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -308,7 +256,25 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/trade/strategy/macd.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/trade/strategy/dma.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="event (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ganlanshu_open" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/event" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -351,19 +317,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.event" />
       <item itemvalue="Python.sma" />
-      <item itemvalue="Python.macd" />
       <item itemvalue="Python.BBcurve" />
       <item itemvalue="Python.svm" />
+      <item itemvalue="Python.event (1)" />
+      <item itemvalue="Python.dma" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.dma" />
+        <item itemvalue="Python.event (1)" />
         <item itemvalue="Python.svm" />
         <item itemvalue="Python.BBcurve" />
         <item itemvalue="Python.sma" />
-        <item itemvalue="Python.macd" />
-        <item itemvalue="Python.event" />
       </list>
     </recent_temporary>
   </component>
@@ -384,16 +350,16 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7243067" weight="0.20058565" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7243067" visible="true" weight="0.20058565" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32300162" />
       <window_info anchor="bottom" x="0" y="255" width="1366" height="218" id="Event Log" order="10" sideWeight="0.50907713" side_tool="true" weight="0.47634584" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4924357" weight="0.55079365" />
       <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" weight="0.49241146" />
       <window_info anchor="bottom" x="22" y="206" width="1322" height="316" id="Python Console" order="11" sideWeight="0.816944" weight="0.4192496" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4924357" visible="true" weight="0.14444445" />
       <window_info id="Structure" order="1" sideWeight="0.4848485" side_tool="true" weight="0.25265554" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.48241207" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49092284" weight="0.36190477" />
       <window_info id="Favorites" order="2" sideWeight="0.5040783" side_tool="true" weight="0.5151286" />
+      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49092284" weight="0.36190477" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.24126984" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24961714" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
@@ -409,32 +375,6 @@
       <window_info anchor="bottom" id="Messages" order="0" weight="0.32899022" />
       <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24961714" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7243067" visible="true" weight="0.20058565" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.4924357" visible="true" weight="0.45714286" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" id="Data View" order="5" weight="0.15629742" />
-      <window_info id="Structure" order="1" sideWeight="0.4848485" side_tool="true" weight="0.25265554" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.32300162" />
-      <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" weight="0.49241146" />
-      <window_info anchor="bottom" id="Changes" order="8" weight="0.2822186" />
-      <window_info anchor="bottom" id="Application Servers" order="9" />
-      <window_info anchor="bottom" x="22" y="206" width="1322" height="316" id="Python Console" order="11" sideWeight="0.816944" weight="0.4192496" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Debug" order="4" sideWeight="0.49092284" weight="0.36190477" />
-      <window_info anchor="right" id="Database" order="4" weight="0.13859111" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.48241207" />
-      <window_info anchor="bottom" x="0" y="255" width="1366" height="218" id="Event Log" order="10" sideWeight="0.50907713" side_tool="true" weight="0.47634584" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="13" weight="0.5650685" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.24126984" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.32899022" />
-      <window_info anchor="right" id="Coverage" order="3" side_tool="true" />
-      <window_info id="Favorites" order="2" sideWeight="0.5040783" side_tool="true" weight="0.5151286" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -445,13 +385,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/strategy/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer_tushare.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -528,27 +461,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/event/event">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="31" lean-forward="true" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/technical/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="83" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/technical/ma.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="65" column="27" lean-forward="true" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/event/event" />
     <entry file="file://$PROJECT_DIR$/trade/feed/genericbarfeed.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -640,15 +553,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trade/analyzer/tradeShares.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1549">
-          <folding>
-            <element signature="e#161#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/trade/analyzer/tradeShares.py" />
     <entry file="file://$PROJECT_DIR$/trade/analyzer/tradeposition.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -663,13 +568,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doc/pyalgotrade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="368" lean-forward="true" selection-start-line="368" selection-end-line="368" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/strategy/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -677,122 +575,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trade/db/db_client.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="59" column="33" lean-forward="true" selection-start-line="59" selection-start-column="33" selection-end-line="59" selection-end-column="33" />
-          <folding>
-            <element signature="e#69#97#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/event">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-464">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#71#108#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzerback.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1870">
-          <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trade/technical/technical.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1263">
-          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/trade/technical/svm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="37" column="32" lean-forward="true" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer.py" />
+    <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzerback.py" />
+    <entry file="file://$PROJECT_DIR$/trade/technical/technical.py" />
+    <entry file="file://$PROJECT_DIR$/trade/technical/svm.py" />
     <entry file="file://$PROJECT_DIR$/trade/analyzer/beta.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="57" column="33" lean-forward="true" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-          <folding>
-            <element signature="e#158#176#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="918">
+          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trade/technical/dma.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trade/technical/BBCurve.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+        <state relative-caret-position="221">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer_tushare.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="e#69#84#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trade/strategy/sma.py">
+    <entry file="file://$PROJECT_DIR$/trade/analyzer/analyzer_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/trade/strategy/macd.py">
+    <entry file="file://$PROJECT_DIR$/test/event">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="57" column="20" lean-forward="true" selection-start-line="52" selection-start-column="4" selection-end-line="57" selection-end-column="20" />
-          <folding>
-            <element signature="e#70#102#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="544">
+          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/technical/ma.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="65" column="25" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Program Files/Anaconda2/Lib/site-packages/pyalgotrade/technical/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="72" column="44" selection-start-line="72" selection-start-column="44" selection-end-line="72" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/teat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="478">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doc/pyalgotrade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="369" lean-forward="true" selection-start-line="369" selection-end-line="369" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/trade/strategy/BBcurve.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="34">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
           <folding>
             <element signature="e#70#89#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/trade/strategy/dma.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <folding>
+            <element signature="e#70#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trade/strategy/macd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#26#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/trade/strategy/sma.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+          <folding>
+            <element signature="e#70#102#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/trade/strategy/svm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="215" column="14" lean-forward="true" selection-start-line="215" selection-start-column="14" selection-end-line="215" selection-end-column="14" />
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="2" selection-end-column="16" />
           <folding>
             <element signature="e#70#102#0" expanded="true" />
           </folding>

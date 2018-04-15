@@ -3,8 +3,6 @@
 # @Author  : 橄榄树
 
 from pyalgotrade import strategy
-from pyalgotrade.barfeed import yahoofeed
-from pyalgotrade.technical import macd
 from pyalgotrade.broker import backtesting
 from trade.analyzer.analyzer_tushare import Analyzer
 from trade.analyzer.transaction import Transaction
@@ -12,15 +10,13 @@ from trade.analyzer.tradeposition import TradePosition
 
 from trade.technical import dma
 import pandas as pd
-# from trade.feed.genericbarfeed import GenericBarFeed
 from trade.feed.csvfeed import GenericBarFeed
 
 import trade.analyzer.analyzer_db as analyzer_db
-from trade.feed.feed_db import FeedClient
 
 
 class MyStrategy(strategy.BacktestingStrategy):
-    def __init__(self, feed, instrument, smaPeriod):
+    def __init__(self, feed, instrument):
         super(MyStrategy, self).__init__(feed, 100000)
         self.__position = None
         self.__instrument = instrument
@@ -57,32 +53,13 @@ class MyStrategy(strategy.BacktestingStrategy):
         if dma[-1] < dma[-2] and dma[-1] < ama[-1] and dma[-2] > ama[-2]:
             self.marketOrder(self.__instrument, -1*shares, True)
 
-        """
-        if bar.getPrice() > self.__sma[-1]:
-            self.marketOrder(self.__instrument, 100, True)
 
-        # Check if we have to exit the position.
-        elif bar.getPrice() <= self.__sma[-1]:
-            self.marketOrder(self.__instrument, -1*shares, True)
-        """
-
-def run_strategy(smaPeriod):
+def run_strategy():
     feed = GenericBarFeed()
-    # feed = yahoofeed.Feed()
-    feed.addBarsFromCSV("sh600519", "D:\sh600519.csv")
-    #tradedata = ts.get_hist_data("600848", start='2017-12-05')
-    #startdate = "2017-12-05"
-    enddate = "2017-09-25"
-    #client = FeedClient()
-    #data = pd.DataFrame(client.get_trade_index("sh600848", startdate))
-    #tradedata['date'] = tradedata.index
-    #feed.addBarsFromCSV("orcl", "D:\orcl-2000.csv")
-    #feed.addBarsFromCSV("java", "D:\orcl-2000.csv")
-    #feed.addBarsFromDataFrame("600848", data)
-
-    # Evaluate the strategy with the feed.
-    myStrategy = MyStrategy(feed, "sh600519", smaPeriod)
-
+    trade_data = pd.read_csv('D:\sh600519.csv')
+    instrument = "sh600519"
+    feed.addBarsFromDataFrame(instrument, trade_data)
+    myStrategy = MyStrategy(feed, instrument)
     myStrategy.run()
 
     data = myStrategy.getAnalyzer().get_analyzerReturn()
@@ -92,4 +69,5 @@ def run_strategy(smaPeriod):
     data3 = myStrategy.getTransposition().getPosition()
     analyzer_db.insert_transposition('sma', data3)
 
-run_strategy(5)
+
+run_strategy()
